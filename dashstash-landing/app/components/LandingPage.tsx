@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Navbar, Nav, Container } from "react-bootstrap";
 import { ArrowRight, CheckCircle, Layout, Share2, Zap } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 export default function LandingPage() {
@@ -17,35 +17,35 @@ export default function LandingPage() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <header className="px-4 px-lg-6 py-3 d-flex align-items-center bg-white">
-        <Link
-          className="d-flex align-items-center text-decoration-none"
-          href="#"
-        >
-          <Image
-            src="/placeholder.svg?height=32&width=32"
-            alt="DashStash Logo"
-            width={32}
-            height={32}
-            className="rounded"
-          />
-          <span className="ms-2 fs-4 fw-bold text-dark">DashStash</span>
-        </Link>
-        <nav className="ms-auto d-flex gap-4">
-          <Link className="text-decoration-none text-primary" href="#features">
-            Features
-          </Link>
-          <Link
-            className="text-decoration-none text-primary"
-            href="#how-it-works"
-          >
-            How It Works
-          </Link>
-          <Link className="text-decoration-none text-primary" href="#survey">
-            Survey
-          </Link>
-        </nav>
-      </header>
+      <Navbar bg="white" expand="lg" className="px-4 px-lg-6 py-3">
+        <Container fluid>
+          <Navbar.Brand href="#" className="d-flex align-items-center">
+            {/* <Image
+              src="/placeholder.svg?height=32&width=32"
+              alt="DashStash Logo"
+              width={32}
+              height={32}
+              className="rounded"
+            /> */}
+            <span className="ms-2 fs-4 fw-bold text-dark">DashStash</span>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#features" className="text-primary">
+                Features
+              </Nav.Link>
+              <Nav.Link href="#how-it-works" className="text-primary">
+                How It Works
+              </Nav.Link>
+              <Nav.Link href="#survey" className="text-primary">
+                Survey
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
       <main className="flex-grow-1">
         <section className="py-5 py-md-7 bg-gradient-primary-to-secondary">
           <div className="container px-4 px-md-6">
@@ -63,22 +63,30 @@ export default function LandingPage() {
                 of important information again.
               </p>
               <div className="mx-auto" style={{ maxWidth: "400px" }}>
-                <Form onSubmit={handleSubmit} className="d-flex gap-2 mb-2">
+                <Form
+                  onSubmit={handleSubmit}
+                  className="d-flex flex-column flex-sm-row gap-2 mb-2"
+                >
                   <Form.Control
                     placeholder="Enter your email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className="flex-grow-1"
                   />
-                  <Button type="submit" variant="light">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="px-4 d-inline-flex align-items-center"
+                  >
                     Join Waitlist
-                    <ArrowRight className="ms-2" size={16} />
+                    <ArrowRight className="ms-2" size={28} />
                   </Button>
                 </Form>
                 <p className="small text-white">
-                  Be the first to experience DashStash! We will notify you when
-                  we launch.
+                  Be the first to experience DashStash! We&apos;ll notify you
+                  when we launch.
                 </p>
               </div>
             </div>
@@ -91,7 +99,9 @@ export default function LandingPage() {
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
               <div className="col">
                 <div className="text-center">
-                  <Layout className="mb-3 text-primary" size={48} />
+                  <div className="d-flex justify-content-center">
+                    <Layout className="mb-3 text-primary" size={48} />
+                  </div>
                   <h3 className="h5 mb-2">Customizable Visual Layouts</h3>
                   <p>
                     Create personalized, topic-specific layouts for your saved
@@ -101,7 +111,9 @@ export default function LandingPage() {
               </div>
               <div className="col">
                 <div className="text-center">
-                  <Zap className="mb-3 text-warning" size={48} />
+                  <div className="d-flex justify-content-center">
+                    <Zap className="mb-3 text-warning" size={48} />
+                  </div>
                   <h3 className="h5 mb-2">AI-Powered Content Resurfacing</h3>
                   <p>
                     Rediscover relevant saved content when you need it most.
@@ -110,7 +122,9 @@ export default function LandingPage() {
               </div>
               <div className="col">
                 <div className="text-center">
-                  <CheckCircle className="mb-3 text-success" size={48} />
+                  <div className="d-flex justify-content-center">
+                    <CheckCircle className="mb-3 text-success" size={48} />
+                  </div>
                   <h3 className="h5 mb-2">Advanced Search and Tagging</h3>
                   <p>
                     Quickly find and organize your saved information with
@@ -120,7 +134,9 @@ export default function LandingPage() {
               </div>
               <div className="col">
                 <div className="text-center">
-                  <Share2 className="mb-3 text-info" size={48} />
+                  <div className="d-flex justify-content-center">
+                    <Share2 className="mb-3 text-info" size={48} />
+                  </div>
                   <h3 className="h5 mb-2">
                     Easy Sharing of Curated Collections
                   </h3>
@@ -198,22 +214,30 @@ export default function LandingPage() {
                 the future of digital organization.
               </p>
               <div className="mx-auto" style={{ maxWidth: "400px" }}>
-                <Form onSubmit={handleSubmit} className="d-flex gap-2 mb-2">
+                <Form
+                  onSubmit={handleSubmit}
+                  className="d-flex flex-column flex-sm-row gap-2 mb-2"
+                >
                   <Form.Control
                     placeholder="Enter your email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className="flex-grow-1"
                   />
-                  <Button type="submit" variant="light">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="px-4 d-inline-flex align-items-center"
+                  >
                     Join Waitlist
-                    <ArrowRight className="ms-2" size={16} />
+                    <ArrowRight className="ms-2" size={28} />
                   </Button>
                 </Form>
                 <p className="small">
-                  Be the first to experience DashStash! We will notify you when
-                  we launch.
+                  Be the first to experience DashStash! We&apos;ll notify you
+                  when we launch.
                 </p>
               </div>
             </div>
@@ -228,7 +252,12 @@ export default function LandingPage() {
                 We value your input! Take our quick survey and help us create
                 the perfect digital organization tool for you.
               </p>
-              <Button href="#" variant="primary" size="lg" className="mb-3">
+              <Button
+                href="#"
+                variant="primary"
+                size="lg"
+                className="mb-3 d-inline-flex align-items-center"
+              >
                 Take Our Quick Survey
                 <ArrowRight className="ms-2" size={16} />
               </Button>
