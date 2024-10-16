@@ -265,6 +265,11 @@ const DailyReadsLayout: React.FC = () => {
       >
         Example Dashboard: {currentLayout}
       </h2>
+
+      <p className="text-center mb-4">
+        Explore the interactive elements below. Click on dropdowns and try
+        different layout styles to see various views of your content.
+      </p>
       <Row className="mb-4">
         <Col md={6}>
           <Dropdown>

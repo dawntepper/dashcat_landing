@@ -23,12 +23,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import DailyReads from "./DailyReads";
-import AIGeneratedBirthdayLayout from "./AIGeneratedBirthdayLayout";
 
 const LandingPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [showAIDemo, setShowAIDemo] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -38,10 +36,6 @@ const LandingPage: React.FC = () => {
     e.preventDefault();
     console.log("Email submitted:", email);
     setEmail("");
-  };
-
-  const handleShowAIDemo = () => {
-    setShowAIDemo(true);
   };
 
   return (
@@ -62,9 +56,9 @@ const LandingPage: React.FC = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#example">Example</Nav.Link>
+              <Nav.Link href="#d">Example</Nav.Link>
               <Nav.Link href="#how-it-works">How It Works</Nav.Link>
-              <Nav.Link href="#ai-demo">AI Demo</Nav.Link>
+              <Nav.Link href="#coming-soon">Coming Soon</Nav.Link>
               <Nav.Link href="#get-started">Get Started</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -82,16 +76,16 @@ const LandingPage: React.FC = () => {
                   }`}
                 >
                   <h1 className="display-3 fw-bold mb-3">
-                    Your AI-Powered Digital Library
+                    Your Personalized Digital Library
                   </h1>
                   <p className="lead mb-4">
-                    Organize, Discover, and Share Your Online World with
+                    Curate, Organize, and Rediscover Your Online World with
                     DashStash
                   </p>
                   <p className="mb-5">
-                    Create sleek, customizable layouts for your digital finds
-                    using AI-generated suggestions. Never lose track of
-                    important information again.
+                    Create custom layouts that fit your unique needs. Easily
+                    manage your digital finds and never lose track of important
+                    information again.
                   </p>
                 </div>
               </Col>
@@ -143,9 +137,9 @@ const LandingPage: React.FC = () => {
               {[
                 {
                   icon: Layout,
-                  title: "AI-Powered Layouts",
+                  title: "Custom Layouts",
                   description:
-                    "Create personalized, topic-specific layouts with AI assistance for your digital library.",
+                    "Create personalized, topic-specific layouts that suit your unique organizational style.",
                 },
                 {
                   icon: Zap,
@@ -163,7 +157,7 @@ const LandingPage: React.FC = () => {
                   icon: Share2,
                   title: "Easy Sharing of Collections",
                   description:
-                    "Share your AI-generated layouts and curated content collections with anyone.",
+                    "Share your curated content collections with anyone, fostering collaboration and knowledge exchange.",
                 },
                 {
                   icon: PlusCircle,
@@ -196,30 +190,8 @@ const LandingPage: React.FC = () => {
           </Container>
         </section>
 
-        <section id="video" className="py-5 bg-white">
+        <section id="example" className="py-5 bg-white">
           <Container>
-            <h2 className="text-center mb-5 display-4 fw-bold">
-              See DashStash in Action
-            </h2>
-            <Row className="justify-content-center">
-              <Col md={8}>
-                <div className="ratio ratio-16x9">
-                  <iframe
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    title="DashStash Demo"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
-        <section id="example" className="py-5 bg-light">
-          <Container>
-            <h2 className="text-center mb-5 display-4 fw-bold">
-              Example Dashboard: Daily Reads
-            </h2>
             <Card className="border-0 shadow-sm">
               <Card.Body>
                 <DailyReads />
@@ -228,28 +200,28 @@ const LandingPage: React.FC = () => {
           </Container>
         </section>
 
-        <section id="how-it-works" className="py-5 bg-white">
+        <section id="how-it-works" className="py-5 bg-light">
           <Container>
             <h2 className="text-center mb-5 display-4 fw-bold">How It Works</h2>
             <Row xs={1} md={3} className="g-4">
               {[
                 {
                   number: 1,
-                  title: "Describe Your Needs",
+                  title: "Add Your Content",
                   description:
-                    "Tell our AI what kind of layout you need and what information you want to organize.",
+                    "Save articles, bookmarks, and resources to your DashStash library with a single click.",
                 },
                 {
                   number: 2,
-                  title: "AI Generates Layout",
+                  title: "Organize Your Way",
                   description:
-                    "Our AI creates a custom layout with relevant sections, tags, and organization structure.",
+                    "Create custom layouts, add tags, and sort your content into personalized sections.",
                 },
                 {
                   number: 3,
-                  title: "Customize & Use",
+                  title: "Discover and Share",
                   description:
-                    "Refine the AI-generated layout and start organizing your digital content effortlessly.",
+                    "Easily find and rediscover your saved content, and share collections with others.",
                 },
               ].map((step, index) => (
                 <Col key={index}>
@@ -273,37 +245,36 @@ const LandingPage: React.FC = () => {
           </Container>
         </section>
 
-        <section id="ai-demo" className="py-5 bg-light">
+        <section id="coming-soon" className="py-5 bg-white">
           <Container>
             <h2 className="text-center mb-5 display-4 fw-bold">
-              AI-Powered Layout Generator Demo
+              Coming Soon: AI-Powered Layouts
             </h2>
             <Row className="justify-content-center">
               <Col md={8}>
                 <Card>
                   <Card.Body className="text-center">
                     <p className="mb-4 fw-bold text-primary">
-                      This is a conceptual demo to showcase the potential of
-                      AI-generated layouts.
+                      We&apos;re working on an exciting new feature to enhance
+                      your DashStash experience!
                     </p>
                     <p className="mb-4">
-                      The actual AI-generated layouts will be available in the
-                      full product.
+                      Soon, you&apos;ll be able to generate custom layouts using
+                      AI. Simply describe your ideal layout, and our AI will
+                      create a tailored organization structure for your content.
                     </p>
-                    <Button variant="primary" onClick={handleShowAIDemo}>
-                      View AI-Generated Layout Demo
-                    </Button>
+                    <ul className="list-unstyled text-start">
+                      <li>✓ Describe your layout needs in natural language</li>
+                      <li>✓ AI generates a custom layout structure</li>
+                      <li>
+                        ✓ Easily refine and personalize the AI-generated layout
+                      </li>
+                      <li>✓ Save time on manual organization</li>
+                    </ul>
                   </Card.Body>
                 </Card>
               </Col>
             </Row>
-            {showAIDemo && (
-              <Row className="mt-5">
-                <Col>
-                  <AIGeneratedBirthdayLayout />
-                </Col>
-              </Row>
-            )}
           </Container>
         </section>
 
@@ -315,7 +286,7 @@ const LandingPage: React.FC = () => {
               </h2>
               <p className="lead mb-5">
                 Join the DashStash waitlist and be among the first to experience
-                the future of AI-powered digital organization.
+                the future of personalized digital organization.
               </p>
               <Row className="justify-content-center">
                 <Col md={6}>
