@@ -11,14 +11,24 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import { ArrowRight, CheckCircle, Layout, Share2, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Layout,
+  PlusCircle,
+  Search,
+  Share2,
+  Zap,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import DailyReads from "./DailyReads";
+import AIGeneratedBirthdayLayout from "./AIGeneratedBirthdayLayout";
 
 const LandingPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [showAIDemo, setShowAIDemo] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -28,6 +38,10 @@ const LandingPage: React.FC = () => {
     e.preventDefault();
     console.log("Email submitted:", email);
     setEmail("");
+  };
+
+  const handleShowAIDemo = () => {
+    setShowAIDemo(true);
   };
 
   return (
@@ -50,6 +64,7 @@ const LandingPage: React.FC = () => {
               <Nav.Link href="#features">Features</Nav.Link>
               <Nav.Link href="#example">Example</Nav.Link>
               <Nav.Link href="#how-it-works">How It Works</Nav.Link>
+              <Nav.Link href="#ai-demo">AI Demo</Nav.Link>
               <Nav.Link href="#get-started">Get Started</Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -123,32 +138,44 @@ const LandingPage: React.FC = () => {
 
         <section id="features" className="py-5 bg-light">
           <Container>
-            <h2 className="text-center mb-5">Key Features</h2>
-            <Row xs={1} md={2} lg={4} className="g-4">
+            <h2 className="text-center mb-5 display-4 fw-bold">Key Features</h2>
+            <Row xs={1} md={2} lg={3} className="g-4">
               {[
                 {
                   icon: Layout,
                   title: "AI-Powered Layouts",
                   description:
-                    "Create personalized, topic-specific layouts with AI assistance.",
+                    "Create personalized, topic-specific layouts with AI assistance for your digital library.",
                 },
                 {
                   icon: Zap,
-                  title: "Smart Content Resurfacing",
+                  title: "Smart Content Organization",
                   description:
-                    "Rediscover relevant saved content when you need it most.",
+                    "Easily categorize and manage your saved content with sections, tags, and powerful search capabilities.",
                 },
                 {
-                  icon: CheckCircle,
-                  title: "Advanced Search and Tagging",
+                  icon: BookOpen,
+                  title: "Comprehensive Library",
                   description:
-                    "Quickly find and organize your saved information with powerful search tools.",
+                    "Access all your saved resources in one place, with options to sort, filter, and organize your digital collection.",
                 },
                 {
                   icon: Share2,
                   title: "Easy Sharing of Collections",
                   description:
                     "Share your AI-generated layouts and curated content collections with anyone.",
+                },
+                {
+                  icon: PlusCircle,
+                  title: "Quick Content Addition",
+                  description:
+                    "Add articles, import bookmarks, and expand your digital library with just a few clicks.",
+                },
+                {
+                  icon: Search,
+                  title: "Advanced Search",
+                  description:
+                    "Find exactly what you need with powerful search functionality across your entire content library.",
                 },
               ].map((feature, index) => (
                 <Col key={index}>
@@ -171,7 +198,9 @@ const LandingPage: React.FC = () => {
 
         <section id="video" className="py-5 bg-white">
           <Container>
-            <h2 className="text-center mb-5">See DashStash in Action</h2>
+            <h2 className="text-center mb-5 display-4 fw-bold">
+              See DashStash in Action
+            </h2>
             <Row className="justify-content-center">
               <Col md={8}>
                 <div className="ratio ratio-16x9">
@@ -188,26 +217,20 @@ const LandingPage: React.FC = () => {
 
         <section id="example" className="py-5 bg-light">
           <Container>
-            <h2 className="text-center mb-5">Example Dashboard: Daily Reads</h2>
+            <h2 className="text-center mb-5 display-4 fw-bold">
+              Example Dashboard: Daily Reads
+            </h2>
             <Card className="border-0 shadow-sm">
               <Card.Body>
                 <DailyReads />
               </Card.Body>
             </Card>
-            <div className="text-center mt-4">
-              <p className="mb-3">
-                Create personalized dashboards for your daily information needs!
-              </p>
-              <Button variant="primary" size="lg" href="/demo">
-                Try It Yourself
-              </Button>
-            </div>
           </Container>
         </section>
 
         <section id="how-it-works" className="py-5 bg-white">
           <Container>
-            <h2 className="text-center mb-5">How It Works</h2>
+            <h2 className="text-center mb-5 display-4 fw-bold">How It Works</h2>
             <Row xs={1} md={3} className="g-4">
               {[
                 {
@@ -247,6 +270,40 @@ const LandingPage: React.FC = () => {
                 </Col>
               ))}
             </Row>
+          </Container>
+        </section>
+
+        <section id="ai-demo" className="py-5 bg-light">
+          <Container>
+            <h2 className="text-center mb-5 display-4 fw-bold">
+              AI-Powered Layout Generator Demo
+            </h2>
+            <Row className="justify-content-center">
+              <Col md={8}>
+                <Card>
+                  <Card.Body className="text-center">
+                    <p className="mb-4 fw-bold text-primary">
+                      This is a conceptual demo to showcase the potential of
+                      AI-generated layouts.
+                    </p>
+                    <p className="mb-4">
+                      The actual AI-generated layouts will be available in the
+                      full product.
+                    </p>
+                    <Button variant="primary" onClick={handleShowAIDemo}>
+                      View AI-Generated Layout Demo
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+            {showAIDemo && (
+              <Row className="mt-5">
+                <Col>
+                  <AIGeneratedBirthdayLayout />
+                </Col>
+              </Row>
+            )}
           </Container>
         </section>
 
